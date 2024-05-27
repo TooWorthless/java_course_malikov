@@ -28,4 +28,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         .password(user.getPassword())
         .build();
   }
+
+  public User getUserByEmail(String email) {
+    User user = repository.findByEmail(email).orElseThrow(() ->
+    new NotFoundException(String.format("User does not exist, email: %s", email)));
+
+    return user;
+  }
 }

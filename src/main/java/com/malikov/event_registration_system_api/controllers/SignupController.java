@@ -18,15 +18,15 @@ public class SignupController {
     @Autowired
     private UserService userService;
 
-    @GetMapping
-    public String signup(Model model) {
-        return "signup";
-    }
+    // @GetMapping
+    // public String signup(Model model) {
+    //     return "signup";
+    // }
 
     @PostMapping
     public String signupFormUrlEncoded(SignupRequest requestDto) {
         userService.signup(requestDto);
-        return "redirect:/loigin";
+        return "redirect:/login";
     }
     
 }

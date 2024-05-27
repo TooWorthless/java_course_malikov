@@ -14,6 +14,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.HttpStatusReturningLogoutSuccessHandler;
 
 import com.malikov.event_registration_system_api.jwt.JwtAuthFilter;
 import com.malikov.event_registration_system_api.services.UserDetailsServiceImpl;
@@ -38,19 +39,35 @@ public class SecurityConfig {
         return http
                 .cors(AbstractHttpConfigurer::disable)
                 .csrf(AbstractHttpConfigurer::disable)
-                // .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
+                // .sessionManagement(session ->
+                // session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
+                .sessionManagement(session -> session
+                        .sessionCreationPolicy(SessionCreationPolicy.IF_REQUIRED))
                 // Set permissions on endpoints
                 .authorizeHttpRequests(auth -> auth
                         // our public endpoints
-                        .requestMatchers(HttpMethod.POST, "/api/auth/signup/**").permitAll()
-                        .requestMatchers(HttpMethod.POST, "/api/auth/login/**").permitAll()
-                        .requestMatchers("/", "/login", "/signup").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/signup").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
+                        .requestMatchers(
+                                "/",
+                                "/home",
+                                "/events/**",
+                                "/login",
+                                "/signup",
+                                "/css/**",
+                                "/js/**",
+                                "/images/**")
+                        .permitAll()
                         // our private endpoints
                         .anyRequest().authenticated())
                 .formLogin((form) -> form
                         .loginPage("/login")
                         .permitAll())
+                .logout(logout -> logout
+                        .logoutUrl("/logout")
+                        .logoutSuccessUrl("/login")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID"))
                 .authenticationManager(authenticationManager)
 
                 // We need jwt filter before the UsernamePasswordAuthenticationFilter.

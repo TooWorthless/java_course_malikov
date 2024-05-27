@@ -125,16 +125,16 @@
 <body>
     <header>
         <div class="logo">
-            <img src="logo.jpg" alt="Логотип">
+            <img src="/images/logo.jpg" alt="Логотип">
             <h1>Система регистрации событий</h1>
         </div>
         <nav>
             <ul>
                 <li><a href="/">Главная</a></li>
-                <li><a href="#">Все события</a></li>
-                <li><a href="#">Личный кабинет</a></li>
-                <li><a href="#">О нас</a></li>
-                <li><a href="#">Контакты</a></li>
+                <li><a href="/events">Все события</a></li>
+                <li><a href="/profile">Личный кабинет</a></li>
+                <li><a href="/">О нас</a></li>
+                <li><a href="/">Контакты</a></li>
             </ul>
         </nav>
     </header>
@@ -146,16 +146,11 @@
             <button onclick="location.href='/events'">Посмотреть события</button>
         </section>
 
-        <section id="events">
-            <h2>Все события</h2>
-            <p>Список всех доступных событий для регистрации.</p>
-            <!-- Здесь будет динамически добавляться список событий -->
-        </section>
 
         <section id="profile">
             <h2>Личный кабинет</h2>
             <p>Управляйте своими регистрациями и настройками профиля.</p>
-            <button onclick="location.href='login.html'">Войти</button>
+            <button onclick="location.href='/login'">Войти</button>
         </section>
 
         <section id="about">
@@ -178,6 +173,5 @@
     </footer>
 
 </body>
-<a href="/">Main</a>
 
 </html>

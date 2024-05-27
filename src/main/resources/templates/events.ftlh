@@ -171,7 +171,7 @@
 <body>
     <header>
         <div class="logo">
-            <img src="logo.jpg" alt="Логотип">
+            <img src="/images/logo.jpg" alt="Логотип">
             <h1>Система регистрации событий</h1>
         </div>
         <nav>
