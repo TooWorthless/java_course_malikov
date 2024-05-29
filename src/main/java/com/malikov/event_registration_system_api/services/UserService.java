@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 import com.malikov.event_registration_system_api.controllers.dtos.SignupRequest;
 import com.malikov.event_registration_system_api.enums.Role;
 import com.malikov.event_registration_system_api.exceptions.DuplicateException;
-import com.malikov.event_registration_system_api.models.Event;
 import com.malikov.event_registration_system_api.models.User;
 import com.malikov.event_registration_system_api.repositories.UserRepository;
 
