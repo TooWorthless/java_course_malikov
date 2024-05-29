@@ -1,4 +1,4 @@
-package com.malikov.event_registration_system_api;
+package com.malikov.event_registration_system_api.configs;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;

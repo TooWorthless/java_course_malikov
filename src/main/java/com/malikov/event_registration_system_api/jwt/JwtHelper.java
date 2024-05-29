@@ -48,7 +48,7 @@ public class JwtHelper {
                             .build()
                             .parseClaimsJws(token)
                             .getBody();
-        } catch (SignatureException | ExpiredJwtException e) { // Invalid signature or expired token
+        } catch (SignatureException | ExpiredJwtException e) {
             throw new AccessDeniedException("Access denied: " + e.getMessage());
         }
     }

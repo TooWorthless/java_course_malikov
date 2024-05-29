@@ -75,4 +75,14 @@ public class EventRegistrationService {
             }
         }
     }
+
+    public void deleteRegistrationsByUser(Long userId) {
+        List<EventRegistration> allRegistrations = listRegistrations();
+
+        for(EventRegistration er : allRegistrations) {
+            if(er.getUser().getId() == userId) {
+                unregisterUserFromEvent(er.getId());
+            }
+        }
+    }
 }

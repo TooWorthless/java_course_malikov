@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import com.malikov.event_registration_system_api.controllers.dtos.SignupRequest;
 import com.malikov.event_registration_system_api.enums.Role;
 import com.malikov.event_registration_system_api.exceptions.DuplicateException;
+import com.malikov.event_registration_system_api.models.Event;
 import com.malikov.event_registration_system_api.models.User;
 import com.malikov.event_registration_system_api.repositories.UserRepository;
 
@@ -21,6 +22,9 @@ public class UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private EventRegistrationService eventRegistrationService;
 
     public void signup(SignupRequest request) {
         String name = request.getName();
@@ -41,5 +45,25 @@ public class UserService {
 
     public List<User> getUsers() {
         return repository.findAll();
+    }
+
+    public void addUser(User user) {
+        repository.save(user);
+    }
+
+    public void deleteUser(Long id) {
+        eventRegistrationService.deleteRegistrationsByUser(id);
+        repository.deleteById(id);
+    }
+
+    public User getUserById(Long id) {
+        return repository.findById(id).orElse(null);
+    }
+
+    public void updateUser(User updatedUser) {
+        User existingUser = repository.findById(updatedUser.getId()).orElse(null);
+        if (existingUser != null) {
+            repository.save(updatedUser);
+        }
     }
 }

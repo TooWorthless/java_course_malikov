@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.malikov.event_registration_system_api.CustomAuthenticationManager;
+import com.malikov.event_registration_system_api.configs.CustomAuthenticationManager;
 import com.malikov.event_registration_system_api.controllers.dtos.ApiErrorResponse;
 import com.malikov.event_registration_system_api.controllers.dtos.LoginRequest;
 import com.malikov.event_registration_system_api.controllers.dtos.LoginResponse;
@@ -52,8 +52,6 @@ public class AuthController {
         try {
             Authentication authentication = authenticationManager
                     .authenticate(new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword()));
-
-            // = SecurityContextHolder.getContext().getAuthentication();
 
             if (authentication == null) {
                 throw new AccessDeniedException("Access Denied!");

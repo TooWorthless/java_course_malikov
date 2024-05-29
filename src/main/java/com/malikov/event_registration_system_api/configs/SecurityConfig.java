@@ -15,7 +15,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
-import com.malikov.event_registration_system_api.CustomAuthenticationManager;
 import com.malikov.event_registration_system_api.jwt.JwtAuthFilter;
 
 @Configuration
@@ -66,24 +65,10 @@ public class SecurityConfig {
                         .invalidateHttpSession(true)
                         .deleteCookies("JSESSIONID"))
                 .authenticationManager(customAuthenticationManager)
-
-                // We need jwt filter before the UsernamePasswordAuthenticationFilter.
-                // Since we need every request to be authenticated before going through spring
-                // security filter.
-                // (UsernamePasswordAuthenticationFilter creates a
-                // UsernamePasswordAuthenticationToken from a username and password that are
-                // submitted in the HttpServletRequest.)
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
 
-    // @Bean
-    // public AuthenticationManager authenticationManager(HttpSecurity http) throws Exception {
-    //     AuthenticationManagerBuilder authenticationManagerBuilder = http
-    //             .getSharedObject(AuthenticationManagerBuilder.class);
-    //     authenticationManagerBuilder.userDetailsService(userDetailsService).passwordEncoder(passwordEncoder());
-    //     return authenticationManagerBuilder.build();
-    // }
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
