@@ -6,10 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Main Page</h1>
-    <br>
-    <a href="/home">Home</a>
-    <br><br>
-    <a href="/events">Events</a>
+    <h1 style="color: red;">Error</h1>
 </body>
 </html>

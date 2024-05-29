@@ -62,26 +62,29 @@ main section h2 {
     color: #4CAF50;
 }
 
-.profile-info {
-    margin-bottom: 20px;
+main section p {
+    font-size: 1.1em;
 }
 
-.events-list ul {
-    padding: 0;
-    list-style: none;
+.event-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.events-list ul li {
-    margin-bottom: 10px;
+.event-item {
+    background-color: white;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }
 
-.events-list ul li a {
-    color: #4CAF50;
-    text-decoration: none;
+.event-item h3 {
+    margin-top: 0;
 }
 
-.events-list ul li a:hover {
-    text-decoration: underline;
+.event-item p {
+    margin: 5px 0;
 }
 
 button {
@@ -102,7 +105,7 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     bottom: 0;
 }

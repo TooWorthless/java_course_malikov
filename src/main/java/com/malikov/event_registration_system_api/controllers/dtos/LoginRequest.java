@@ -9,7 +9,7 @@ public class LoginRequest {
     @NotNull @Email @Length(min = 5, max = 50)
 	private String email;
 	
-	@NotNull @Length(min = 5, max = 20)
+	@NotNull @Length(min = 5, max = 200)
 	private String password;
 
 	public String getEmail() {

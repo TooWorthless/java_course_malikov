@@ -26,12 +26,21 @@ public class Event {
     
     @Column(name = "name")
     private String name;
+
+    @Column(name = "title")
+    private String title;
     
     @Column(name = "description")
     private String description;
     
     @Column(name = "date")
     private LocalDate date;
+
+    @Column(name = "place")
+    private String place;
+
+    @Column(name = "image")
+    private String image;
     
     public void setId(Long id) {
         this.id = id;
@@ -63,5 +72,26 @@ public class Event {
 
     public LocalDate getDate() {
         return this.date;
+    }
+
+    public String getPlace() {
+      return this.place;
+    }
+    public void setPlace(String value) {
+      this.place = value;
+    }
+
+    public String getTitle() {
+      return this.title;
+    }
+    public void setTitle(String value) {
+      this.title = value;
+    }
+
+    public String getImage() {
+      return this.image;
+    }
+    public void setImage(String value) {
+      this.image = value;
     }
 }

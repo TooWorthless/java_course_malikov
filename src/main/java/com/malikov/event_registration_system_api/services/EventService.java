@@ -14,11 +14,15 @@ public class EventService {
     @Autowired
     private EventRepository eventRepository;
 
+    @Autowired
+    private EventRegistrationService eventRegistrationService;
+
     public void addEvent(Event event) {
         eventRepository.save(event);
     }
 
     public void deleteEvent(Long id) {
+        eventRegistrationService.deleteRegistrationsByEvent(id);
         eventRepository.deleteById(id);
     }
 
@@ -28,5 +32,12 @@ public class EventService {
 
     public Event getEventById(Long id) {
         return eventRepository.findById(id).orElse(null);
+    }
+
+    public void updateEvent(Event updatedEvent) {
+        Event existingEvent = eventRepository.findById(updatedEvent.getId()).orElse(null);
+        if (existingEvent != null) {
+            eventRepository.save(updatedEvent);
+        }
     }
 }

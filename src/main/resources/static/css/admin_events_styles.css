@@ -1,3 +1,5 @@
+/* Общие стили */
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
@@ -50,59 +52,72 @@ header nav ul li a:hover {
     text-decoration: underline;
 }
 
+form > * {
+    margin: 10px;
+}
+
+.updating_btn {
+    display: none;
+}
+
 main {
     padding: 20px;
 }
 
-main section {
+section#events {
     margin-bottom: 40px;
 }
 
-main section h2 {
+section#events h2 {
     color: #4CAF50;
 }
 
-.profile-info {
+.event {
+    background-color: #fff;
+    padding: 20px;
     margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.events-list ul {
-    padding: 0;
-    list-style: none;
+.event h3 {
+    color: #333;
 }
 
-.events-list ul li {
-    margin-bottom: 10px;
+.event p {
+    margin: 10px 0;
 }
 
-.events-list ul li a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-.events-list ul li a:hover {
-    text-decoration: underline;
-}
-
-button {
+.actions button {
     background-color: #4CAF50;
     color: white;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 16px;
+    margin-right: 10px;
     cursor: pointer;
-    font-size: 1em;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
 }
 
-button:hover {
+.actions button:hover {
     background-color: #45a049;
 }
+
+input {
+    display: none;
+}
+
+textarea {
+    display: none;
+}
+
 
 footer {
     background-color: #333;
     color: white;
     text-align: center;
     padding: 10px 0;
-    position: absolute;
+    /* position: absolute; */
     width: 100%;
     bottom: 0;
 }

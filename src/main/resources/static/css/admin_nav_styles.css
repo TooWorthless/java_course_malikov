@@ -62,26 +62,8 @@ main section h2 {
     color: #4CAF50;
 }
 
-.profile-info {
-    margin-bottom: 20px;
-}
-
-.events-list ul {
-    padding: 0;
-    list-style: none;
-}
-
-.events-list ul li {
-    margin-bottom: 10px;
-}
-
-.events-list ul li a {
-    color: #4CAF50;
-    text-decoration: none;
-}
-
-.events-list ul li a:hover {
-    text-decoration: underline;
+main section p {
+    font-size: 1.1em;
 }
 
 button {

@@ -23,6 +23,7 @@ public class UserService {
     private PasswordEncoder passwordEncoder;
 
     public void signup(SignupRequest request) {
+        String name = request.getName();
         String email = request.getEmail();
         Optional<User> existingUser = repository.findByEmail(email);
         if (existingUser.isPresent()) {
@@ -31,7 +32,7 @@ public class UserService {
 
         String hashedPassword = passwordEncoder.encode(request.getPassword());
         User user = new User();
-        user.setName(request.getName());
+        user.setName(name);
         user.setEmail(email);
         user.setRoles(Collections.singleton(Role.USER));
         user.setPassword(hashedPassword);

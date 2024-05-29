@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All events - Event registration system</title>
-    <link rel="stylesheet" href="/css/events_styles.css">
+    <title>Admin home - Event Registration System</title>
+    <link rel="stylesheet" href="/css/admin_nav_styles.css">
 </head>
 
 <body>
@@ -26,20 +26,20 @@
     </header>
 
     <main>
-        <section id="events">
-            <h2>All events</h2>
-            <p>List of all available events for registration.</p>
-            <div class="event-list">
-
-                <#list events as event>
-                    <div class="event-item">
-                        <h3><a href="/event/${event.id}">${event.name}</a></h3>
-                        <p>${event.title}. Date: ${event.date}</p>
-                    </div>
-                </#list>
-
-            </div>
+        <section>
+            <h2>Event management</h2>
+            <p>Here you can view all events, delete them, or change information about them</p>
+            <button onclick="location.href='/admin/events'">Events</button>
+            <button onclick="location.href='/admin/events/create'">Create event</button>
         </section>
+
+
+        <!-- <section>
+            <h2>User management</h2>
+            <p>Here you can view all users, delete them, or change infromation about them</p>
+            <button onclick="location.href='/admin/users'">Users</button>
+            <button onclick="location.href='/admin/user'">Create user</button>
+        </section> -->
     </main>
 
     <footer>
@@ -49,5 +49,7 @@
             <li><a href="/">Terms of Use</a></li>
         </ul>
     </footer>
+
 </body>
+
 </html>

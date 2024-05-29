@@ -1,5 +1,6 @@
 package com.malikov.event_registration_system_api.services;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,11 +23,56 @@ public class EventRegistrationService {
         eventRegistrationRepository.deleteById(id);
     }
 
+    public List<EventRegistration> listRegistrations() {
+        return eventRegistrationRepository.findAll();
+    }
+
     public List<EventRegistration> listRegistrationsByUser(Long userId) {
-        return eventRegistrationRepository.findByUserId(userId);
+        List<EventRegistration> registrations = listRegistrations();
+        List<EventRegistration> userRegistrations = new ArrayList<>();
+
+        for (EventRegistration er : registrations) {
+            if(er.getUser().getId() == userId) {
+                userRegistrations.add(er);
+            }
+        }
+
+        return userRegistrations;
     }
 
     public List<EventRegistration> listRegistrationsByEvent(Long eventId) {
-        return eventRegistrationRepository.findByEventId(eventId);
+        List<EventRegistration> registrations = listRegistrations();
+        List<EventRegistration> userRegistrations = new ArrayList<>();
+
+        for (EventRegistration er : registrations) {
+            if(er.getEvent().getId() == eventId) {
+                userRegistrations.add(er);
+            }
+        }
+
+        return userRegistrations;
+    }
+
+    public EventRegistration getRegistrationByUserAndEvent(Long userId, Long eventId) {
+        List<EventRegistration> registrations = listRegistrations();
+        EventRegistration userRegistration = null;
+
+        for (EventRegistration er : registrations) {
+            if(er.getUser().getId() == userId && er.getEvent().getId() == eventId) {
+                userRegistration = er;
+            }
+        }
+
+        return userRegistration;
+    }
+
+    public void deleteRegistrationsByEvent(Long eventId) {
+        List<EventRegistration> allRegistrations = listRegistrations();
+
+        for(EventRegistration er : allRegistrations) {
+            if(er.getEvent().getId() == eventId) {
+                unregisterUserFromEvent(er.getId());
+            }
+        }
     }
 }
