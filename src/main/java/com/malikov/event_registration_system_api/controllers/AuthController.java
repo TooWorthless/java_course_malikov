@@ -63,10 +63,8 @@ public class AuthController {
             }
 
             String token = JwtHelper.generateToken(request.getEmail());
-            // loginService.addLoginAttempt(request.email(), true);
             return ResponseEntity.ok(new LoginResponse(request.getEmail(), token));
         } catch (BadCredentialsException | AccessDeniedException e) {
-            // throw e;
             return ResponseEntity.badRequest().body(new ApiErrorResponse(HttpServletResponse.SC_BAD_REQUEST, e.getMessage()));
         }
     }

@@ -54,9 +54,7 @@ public class WebContentController {
         if (authentication != null && authentication.isAuthenticated() && authentication.getName() != "anonymousUser") {
             User user = userDetailsServiceImpl.getUserByEmail(authentication.getName());
             Long userId = user.getId();
-
             model.addAttribute("user", user);
-
 
             List<EventRegistration> userEventRegistrations = eventRegistrationService.listRegistrationsByUser(userId);
             List<Event> userEvents = new ArrayList<>();
@@ -69,7 +67,6 @@ public class WebContentController {
         }
         return "profile";
     }
-
 
     @GetMapping("/events")
     public String listEvents(Model model) {

@@ -45,16 +45,7 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/auth/signup").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/signup").permitAll()
-                        .requestMatchers(
-                                HttpMethod.GET,
-                                "/",
-                                "/home",
-                                "/events",
-                                "/event/**",
-                                "/login",
-                                "/css/**",
-                                "/js/**",
-                                "/images/**").permitAll()
+                        .requestMatchers(HttpMethod.GET,"/","/home","/events","/event/**","/login","/css/**","/js/**","/images/**").permitAll()
                         .anyRequest().authenticated())
                 .formLogin((form) -> form
                         .loginPage("/login")
@@ -68,7 +59,6 @@ public class SecurityConfig {
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();
     }
-
 
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
